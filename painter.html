@@ -2,6 +2,12 @@
 <html>
  <head>
     <title>About Painter</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" 
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" 
+    integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
  </head>
  <body>
      <h2>Painter entry by Jyothsna Eleti</h2>
@@ -12,38 +18,47 @@
       <label for="guessPainter">Guess the Painter </label>
       <input type ="text" id="guessPainter" name="guessPainter" autofocus> 
       <br>
-      <input type="button" onclick="checkPainter()" value="Check the guess">
+      <input type="button" onclick="checkPainter()" id="btn" class="btn btn-warning" value="Check the guess">
      </form>
      <p id="results">The count of good and oops guess </p>
     <script> 
       var good = 0;
       var oops = 0;
       function checkPainter(){
+        if(oops>=10){
+        document.getElementById("btn").style.visibility="hidden"
+        alert("Sorry, ran out of guesses")
+    }
+    else{
        console.log("Getting form values")
        PainterName = document.getElementById("Painter").value
        guesspaintername = document.getElementById("guessPainter").value
        confirmed = confirm("Are these the values? "+PainterName+" "+guesspaintername)
        out = document.getElementById("results")
-       if(PainterName == guesspaintername) {
+       if(PainterName == guesspaintername) 
+       {
          alert("You got it right")
          good = good + 1
          out.innerHTML = "Correct Answer: "+good+" "+"Wrong Answer: "+oops;
        }
-       else {
+       else 
+       {
          alert("Sorry")
          oops = oops + 1
          out.innerHTML = "Correct Answer: " +good+" "+"Wrong Answer: "+oops;
        }
       }
-     </script>
+      }
      </script>
      <div class="container-fluid">
          <img src="https://media.istockphoto.com/id/1278277272/photo/heathers.jpg?s=612x612&w=0&k=20&c=Y3FzTLplsxsXQiaTvQNXRT-2y0qFl_sXvOc8onHjBaE=" class="img-fluid" id="image" alt="Erica", onclick=selectImage() height=100, width=100>    
      </div>
      <script>
          myImage =1
-         function selectImage(){
-             switch(myImage){
+         function selectImage()
+         {
+             switch(myImage)
+             {
                  case 1:
                      document.getElementById("image").src="https://images.immediate.co.uk/production/volatile/sites/10/2018/08/132bfce6-22e4-40c9-b2ec-f674f206892f-d26766b.jpg?quality=90&resize=960%2C640";
                      myImage++;
